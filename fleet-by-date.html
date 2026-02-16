@@ -1,1 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Check Availability - Athens Car Rental</title>
+  <meta name="description" content="Check real-time vehicle availability and find the perfect car for your dates in Athens.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@1,400&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">Athens.Car.Rental</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fleet-by-date.html">Fleet by Date</a></li>
+        <li><a href="all-fleet.html">All Fleet</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
+  <!-- Page Content -->
+  <section class="section" style="padding-top: 8rem;">
+    <div class="section-header">
+      <p class="section-subtitle">Real-time availability</p>
+      <h1 class="section-title">Find Your Perfect Vehicle</h1>
+      <p class="section-description">Select your dates and category to see available vehicles. All prices shown are per day.</p>
+    </div>
+
+    <!-- Calendar & Filter Section -->
+    <div class="calendar-section">
+      <div class="date-inputs">
+        <div class="input-group">
+          <label for="start-date">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 0.25rem;">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Pick-up Date
+          </label>
+          <input type="date" id="start-date" required>
+        </div>
+
+        <div class="input-group">
+          <label for="end-date">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 0.25rem;">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+              <line x1="16" y1="2" x2="16" y2="6"/>
+              <line x1="8" y1="2" x2="8" y2="6"/>
+              <line x1="3" y1="10" x2="21" y2="10"/>
+            </svg>
+            Drop-off Date
+          </label>
+          <input type="date" id="end-date" required>
+        </div>
+
+        <div class="input-group">
+          <label for="category-filter">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 0.25rem;">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+            Category
+          </label>
+          <select id="category-filter">
+            <option value="all">All Categories</option>
+            <option value="Economy">Economy</option>
+            <option value="Compact">Compact</option>
+            <option value="Premium">Premium</option>
+            <option value="Luxury">Luxury</option>
+            <option value="SUV">SUV</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="padding: 1.5rem; background: linear-gradient(135deg, rgba(43, 95, 117, 0.05) 0%, rgba(74, 139, 168, 0.08) 100%); border-radius: 8px; margin-top: 1.5rem;">
+        <p style="font-weight: 600; color: var(--color-primary);" id="result-count">Select dates to see available vehicles</p>
+      </div>
+    </div>
+
+    <!-- Results Grid -->
+    <div id="fleet-results" class="fleet-grid"></div>
+
+    <!-- Empty State -->
+    <div id="empty-state" style="display: none; text-align: center; padding: 4rem 2rem;">
+      <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--color-text-light)" stroke-width="1.5" style="margin: 0 auto 1.5rem;">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="8" x2="12" y2="12"/>
+        <line x1="12" y1="16" x2="12.01" y2="16"/>
+      </svg>
+      <h3 style="color: var(--color-primary); margin-bottom: 0.75rem;">No Vehicles Available</h3>
+      <p style="color: var(--color-text-light);">Try different dates or category to see more options.</p>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="section" style="background: var(--color-surface); padding: 4rem 2rem; border-radius: 24px; margin: 0 2rem 4rem;">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <h3 style="margin-bottom: 1.5rem; color: var(--color-primary);">Booking Information</h3>
+      <div style="display: grid; gap: 1.5rem;">
+        <div style="display: flex; gap: 1rem; align-items: start;">
+          <div style="min-width: 40px; height: 40px; background: linear-gradient(135deg, rgba(43, 95, 117, 0.1) 0%, rgba(74, 139, 168, 0.15) 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 0.25rem; color: var(--color-primary); font-size: 1.125rem;">Instant Confirmation</h4>
+            <p style="color: var(--color-text-light); font-size: 0.9375rem;">Book now and receive immediate confirmation via WhatsApp or email.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; align-items: start;">
+          <div style="min-width: 40px; height: 40px; background: linear-gradient(135deg, rgba(43, 95, 117, 0.1) 0%, rgba(74, 139, 168, 0.15) 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 0.25rem; color: var(--color-primary); font-size: 1.125rem;">Flexible Pick-up</h4>
+            <p style="color: var(--color-text-light); font-size: 0.9375rem;">Multiple pick-up locations in Athens. Airport delivery available on request.</p>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 1rem; align-items: start;">
+          <div style="min-width: 40px; height: 40px; background: linear-gradient(135deg, rgba(43, 95, 117, 0.1) 0%, rgba(74, 139, 168, 0.15) 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2">
+              <path d="M12 2v20M2 12h20"/>
+            </svg>
+          </div>
+          <div>
+            <h4 style="margin-bottom: 0.25rem; color: var(--color-primary); font-size: 1.125rem;">All-Inclusive Insurance</h4>
+            <p style="color: var(--color-text-light); font-size: 0.9375rem;">Comprehensive coverage included. Drive with peace of mind.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--color-border); text-align: center;">
+        <p style="color: var(--color-text-light); margin-bottom: 1.5rem;">Ready to book? Contact us via WhatsApp or DM on Instagram</p>
+        <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Athens Car Rental</h4>
+        <p>Premium vehicle rentals in the heart of Athens. Economy, compact, premium, and luxury options available.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="fleet-by-date.html">Fleet by Date</a>
+        <a href="all-fleet.html">All Fleet</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>📍 Athens, Greece</p>
+        <p>📧 info@athens.car.rental</p>
+        <p>📱 WhatsApp for bookings</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <a href="https://instagram.com/athens.car.rental" target="_blank">Instagram</a>
+        <p style="margin-top: 1rem;">1,131 followers</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Athens Car Rental. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
