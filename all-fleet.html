@@ -1,1 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Fleet - Athens Car Rental</title>
+  <meta name="description" content="Browse our complete fleet of economy, compact, premium, and luxury vehicles available for rent in Athens.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500;600;700&family=Crimson+Pro:ital,wght@1,400&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">Athens.Car.Rental</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="fleet-by-date.html">Fleet by Date</a></li>
+        <li><a href="all-fleet.html">All Fleet</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
+  <!-- Page Content -->
+  <section class="section" style="padding-top: 8rem;">
+    <div class="section-header">
+      <p class="section-subtitle">Complete collection</p>
+      <h1 class="section-title">Our Fleet</h1>
+      <p class="section-description">From compact city cars to luxury sedans, we have the perfect vehicle for every journey. All vehicles are well-maintained and fully insured.</p>
+    </div>
+
+    <!-- Category Navigation -->
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+      <button class="btn btn-secondary" onclick="filterCategory('all')" id="filter-all">All Vehicles</button>
+      <button class="btn btn-secondary" onclick="filterCategory('Economy')" id="filter-economy">Economy</button>
+      <button class="btn btn-secondary" onclick="filterCategory('Compact')" id="filter-compact">Compact</button>
+      <button class="btn btn-secondary" onclick="filterCategory('Premium')" id="filter-premium">Premium</button>
+      <button class="btn btn-secondary" onclick="filterCategory('Luxury')" id="filter-luxury">Luxury</button>
+      <button class="btn btn-secondary" onclick="filterCategory('SUV')" id="filter-suv">SUV</button>
+    </div>
+
+    <!-- Fleet Grid -->
+    <div id="all-fleet" class="fleet-grid"></div>
+  </section>
+
+  <!-- Category Details -->
+  <section class="section" style="background: var(--color-surface); padding: 4rem 2rem; border-radius: 24px; margin: 0 2rem 4rem;">
+    <h2 style="text-align: center; margin-bottom: 3rem; color: var(--color-primary);">Vehicle Categories</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+      <!-- Economy -->
+      <div style="padding: 2rem; background: var(--color-bg); border-radius: 12px;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(43, 95, 117, 0.1) 0%, rgba(74, 139, 168, 0.15) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            </svg>
+          </div>
+          <h3 style="color: var(--color-primary); font-size: 1.25rem;">Economy</h3>
+        </div>
+        <p style="color: var(--color-text-light); margin-bottom: 1rem; font-size: 0.9375rem;">Perfect for city driving and budget-conscious travelers. Fuel-efficient and easy to park.</p>
+        <div style="color: var(--color-accent); font-weight: 600;">From €25/day</div>
+      </div>
+
+      <!-- Compact -->
+      <div style="padding: 2rem; background: var(--color-bg); border-radius: 12px;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(43, 95, 117, 0.1) 0%, rgba(74, 139, 168, 0.15) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <h3 style="color: var(--color-primary); font-size: 1.25rem;">Compact</h3>
+        </div>
+        <p style="color: var(--color-text-light); margin-bottom: 1rem; font-size: 0.9375rem;">Ideal balance of comfort and efficiency. Great for couples and small families exploring Greece.</p>
+        <div style="color: var(--color-accent); font-weight: 600;">From €42/day</div>
+      </div>
+
+      <!-- Premium -->
+      <div style="padding: 2rem; background: var(--color-bg); border-radius: 12px;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(43, 95, 117, 0.1) 0%, rgba(74, 139, 168, 0.15) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <h3 style="color: var(--color-primary); font-size: 1.25rem;">Premium</h3>
+        </div>
+        <p style="color: var(--color-text-light); margin-bottom: 1rem; font-size: 0.9375rem;">Executive sedans with advanced features. Perfect for business travelers and special occasions.</p>
+        <div style="color: var(--color-accent); font-weight: 600;">From €85/day</div>
+      </div>
+
+      <!-- Luxury -->
+      <div style="padding: 2rem; background: var(--color-bg); border-radius: 12px;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(43, 95, 117, 0.1) 0%, rgba(74, 139, 168, 0.15) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          </div>
+          <h3 style="color: var(--color-primary); font-size: 1.25rem;">Luxury</h3>
+        </div>
+        <p style="color: var(--color-text-light); margin-bottom: 1rem; font-size: 0.9375rem;">Top-tier vehicles for the ultimate driving experience. Exceptional comfort and performance.</p>
+        <div style="color: var(--color-accent); font-weight: 600;">From €175/day</div>
+      </div>
+
+      <!-- SUV -->
+      <div style="padding: 2rem; background: var(--color-bg); border-radius: 12px;">
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+          <div style="width: 48px; height: 48px; background: linear-gradient(135deg, rgba(43, 95, 117, 0.1) 0%, rgba(74, 139, 168, 0.15) 100%); border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)" stroke-width="2">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+          </div>
+          <h3 style="color: var(--color-primary); font-size: 1.25rem;">SUV</h3>
+        </div>
+        <p style="color: var(--color-text-light); margin-bottom: 1rem; font-size: 0.9375rem;">Spacious and versatile. Ideal for families and longer trips with extra luggage space.</p>
+        <div style="color: var(--color-accent); font-weight: 600;">From €150/day</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" style="text-align: center; padding: 5rem 2rem; background: linear-gradient(135deg, rgba(43, 95, 117, 0.05) 0%, rgba(74, 139, 168, 0.08) 100%); border-radius: 24px; margin: 0 2rem;">
+    <h2 style="margin-bottom: 1rem; color: var(--color-primary);">Found Your Perfect Vehicle?</h2>
+    <p style="font-size: 1.125rem; color: var(--color-text-light); max-width: 600px; margin: 0 auto 2.5rem;">Check availability for your dates or get in touch to reserve your vehicle.</p>
+    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="fleet-by-date.html" class="btn btn-primary">Check Availability</a>
+      <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Athens Car Rental</h4>
+        <p>Premium vehicle rentals in the heart of Athens. Economy, compact, premium, and luxury options available.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <a href="fleet-by-date.html">Fleet by Date</a>
+        <a href="all-fleet.html">All Fleet</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <p>📍 Athens, Greece</p>
+        <p>📧 info@athens.car.rental</p>
+        <p>📱 WhatsApp for bookings</p>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <a href="https://instagram.com/athens.car.rental" target="_blank">Instagram</a>
+        <p style="margin-top: 1rem;">1,131 followers</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Athens Car Rental. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script>
+    // Category filtering for all-fleet page
+    function filterCategory(category) {
+      const cards = document.querySelectorAll('.car-card');
+      const buttons = document.querySelectorAll('[id^="filter-"]');
+      
+      // Update button states
+      buttons.forEach(btn => {
+        btn.style.background = 'transparent';
+        btn.style.borderColor = 'var(--color-border)';
+        btn.style.color = 'var(--color-primary)';
+      });
+      
+      const activeBtn = document.getElementById(`filter-${category.toLowerCase()}`);
+      if (activeBtn) {
+        activeBtn.style.background = 'var(--color-primary)';
+        activeBtn.style.color = 'white';
+        activeBtn.style.borderColor = 'var(--color-primary)';
+      }
+      
+      // Filter cards
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+    
+    // Set "All Vehicles" as active on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      filterCategory('all');
+    });
+  </script>
+</body>
+</html>
